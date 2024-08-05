@@ -1,1 +1,6 @@
-# HospitalManagementSystem
+# HospitalManagementSystem![Uploading Screenshot 2024-03-01 221027.png…]()
+![Screenshot 2024-03-01 220958](https://github.com/user-attachments/assets/b7518b4f-b39b-407a-ab50-ba149dbba87b)
+![Screenshot 2024-03-01 221249](https://github.com/user-attachments/assets/89ccedf9-3985-495a-8e25-16956d855fa0)
+![Screenshot 2024-03-01 221215](https://github.com/user-attachments/assets/43da98de-c37a-4bc7-840d-fd6c99c9773d)
+![Screenshot 2024-03-01 221144](https://github.com/user-attachments/assets/556b2071-5714-4090-ae3a-8f7d54e74d34)
+![Screenshot 2024-03-01 221110](https://github.com/user-attachments/assets/cc84afcf-02a3-4cd4-b88a-6a66457a8360)
