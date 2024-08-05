@@ -1,6 +1,8 @@
-# HospitalManagementSystem![Uploading Screenshot 2024-03-01 221027.png…]()
-![Screenshot 2024-03-01 220958](https://github.com/user-attachments/assets/b7518b4f-b39b-407a-ab50-ba149dbba87b)
-![Screenshot 2024-03-01 221249](https://github.com/user-attachments/assets/89ccedf9-3985-495a-8e25-16956d855fa0)
-![Screenshot 2024-03-01 221215](https://github.com/user-attachments/assets/43da98de-c37a-4bc7-840d-fd6c99c9773d)
-![Screenshot 2024-03-01 221144](https://github.com/user-attachments/assets/556b2071-5714-4090-ae3a-8f7d54e74d34)
-![Screenshot 2024-03-01 221110](https://github.com/user-attachments/assets/cc84afcf-02a3-4cd4-b88a-6a66457a8360)
+# HospitalManagementSystem!
+
+![Screenshot 2024-03-01 220958](https://github.com/user-attachments/assets/3378421b-b38d-4dfb-8800-725ecf9be3a4)
+![Screenshot 2024-03-01 221249](https://github.com/user-attachments/assets/20e7f333-2447-4a43-8916-8daf3a26b633)
+![Screenshot 2024-03-01 221215](https://github.com/user-attachments/assets/46b4c440-eba0-49c5-b450-5eb92e7e8b59)
+![Screenshot 2024-03-01 221144](https://github.com/user-attachments/assets/f6b1f027-b5a4-4b13-b1ac-81723b0db72e)
+![Screenshot 2024-03-01 221110](https://github.com/user-attachments/assets/1e57c788-567a-45c3-9b08-2d737ca79216)
+![Screenshot 2024-03-01 221027](https://github.com/user-attachments/assets/b28f41c6-7a2c-4716-95e5-38dc8fe94888)
