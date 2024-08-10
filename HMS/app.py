@@ -4,7 +4,7 @@ from flask import Flask, flash, redirect, render_template, request, url_for
 import pymongo
 from pymongo import MongoClient
 
-
+import os
 from jinja2 import Environment, FileSystemLoader
 
 Doctor_Logedin = None
@@ -239,4 +239,6 @@ def approve():
             {'$set': {'doc_appoint': name}})
         return redirect('/doctor')
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+    # Get the port number from the environment variable, or use a default (e.g., 5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
