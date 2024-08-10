@@ -5,7 +5,7 @@ from pymongo import MongoClient
 app = Flask(__name__)
 
 # Configure the MongoDB client
-client = MongoClient(os.environ.get('MONGODB_URI'))
+client = MongoClient(os.environ.get('mongodb+srv://manasranjanpradhan2004:root@hms.m7j9t.mongodb.net/?retryWrites=true&w=majority&appName=HMS'))
 db = client['HMS']
 patients_collection = db['patients']
 doctors_collection = db['doctors']
