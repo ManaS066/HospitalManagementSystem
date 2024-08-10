@@ -14,7 +14,7 @@ admin_collection = db['admin']
 appointment_collection = db['appointment']
 contact_collection = db['contact']
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('https://hmsproject.vercel.app/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
         name = request.form['name']
