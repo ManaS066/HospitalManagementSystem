@@ -16,18 +16,18 @@ contact_collection = db['contact']
 
 @app.route('hmsproject.vercel.app/', methods=['GET', 'POST'])
 def home():
-    if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        number = request.form['number']
-        comment = request.form['comment']
-        contact_data = {
-            'name': name,
-            'email': email,
-            'number': number,
-            'comment': comment
-        }
-        contact_collection.insert_one(contact_data)
+    # if request.method == 'POST':
+        # name = request.form['name']
+        # email = request.form['email']
+        # number = request.form['number']
+        # comment = request.form['comment']
+        # contact_data = {
+        #     'name': name,
+        #     'email': email,
+        #     'number': number,
+        #     'comment': comment
+        # }
+        # contact_collection.insert_one(contact_data)
     return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
