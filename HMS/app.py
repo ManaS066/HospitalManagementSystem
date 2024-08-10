@@ -1,22 +1,25 @@
 from flask import Flask, flash, redirect, render_template, request, url_for
 
-from flask_pymongo import PyMongo,MongoClient
+# from flask_pymongo import PyMongo,MongoClient
+import pymongo
+from pymongo import MongoClient
 
-from bson import ObjectId
 
 from jinja2 import Environment, FileSystemLoader
 
+Doctor_Logedin = None
 
 template_loader = FileSystemLoader(searchpath="D:/dev/HMS/templates")
 jinja_env = Environment(loader=template_loader)
 app = Flask(__name__)
-client = MongoClient('mongodb://localhost:27017/')
-db = client['hospital']  # Replace 'hospital' with your MongoDB database name
+
+client = MongoClient('mongodb+srv://manasranjanpradhan2004:root@hms.m7j9t.mongodb.net/?retryWrites=true&w=majority&appName=HMS')
+db = client['HMS']  # Replace 'hospital' with your MongoDB database name
 patients_collection = db['patients']  # Collection for patients
 doctors_collection = db['doctors'] 
 users_collection = db['users'] 
 admin_collection = db['admin']
-appointment_collection = db['appointment']
+appointment_collection = db['appointment'] 
 contact_collection = db['contact']
 
 
@@ -61,6 +64,7 @@ def register():
     return render_template('regisration.html')
 
 
+
 @app.route("/",methods=["get","post"])
 def home():
     if request.method == "POST":
@@ -78,9 +82,12 @@ def home():
     return render_template("index.html")
 
 
+
 @app.get('/user')
 def user():
     return render_template('user_app.html')
+
+
 
 @app.route('/doctor', methods=['GET', 'POST'])
 def doctor_login():
@@ -89,16 +96,16 @@ def doctor_login():
         password = request.form['password']
         
         doctor = doctors_collection.find_one({'username': username, 'password': password})
-        
+        Doctor_Logedin=doctor['name']
         if doctor:
             name = doctor['name']
             email = doctor['email']
             spec = doctor['specialization']
             phone = doctor['phone']
             data = (name, email, spec, phone)
-
+            print(data)
             # Corrected query with projection {'doc_appoint': 1}
-            appointments_data = list(appointment_collection.find({'disease': spec}))
+            appointments_data = list(appointment_collection.find({'disease': spec},))
             template = jinja_env.get_template('doctor_app.html')
             
             # Filter appointments with missing email field
@@ -107,8 +114,9 @@ def doctor_login():
             return template.render(data=data, appointments_data=appointments_data, appointment_emails=appointment_emails)
         else:
             return render_template('doctor_login.html')
-    
+        
     return render_template('doctor_login.html')
+
 
 
 
@@ -131,17 +139,23 @@ def admin():
                 total_app = appointment_collection.count_documents({})
                 total_doc = doctors_collection.count_documents({})
                 total_patient = patients_collection.count_documents({})
-                return render_template('admin_dashboard.html',appointment = total_app,doc=total_doc,patient=total_patient)
+                total_contact = contact_collection.count_documents({})
+                return render_template('admin_dashboard.html',appointment = total_app,doc=total_doc,patient=total_patient,contact  = total_contact)
             else:
                 return 'Wrong password'
         else:
             return 'Username not found Contact Data Admin To Add Your Account.'
      else:
         return render_template('admin_pass.html')
+     
+
+
+    
 @app.route("/admin/contact-us")
 def admin_contact_us():
     contacts = contact_collection.find()
     return render_template("admin_contact_us.html", contacts=contacts)
+
 
 
 @app.route('/add_patient',methods=['GET', 'POST'])
@@ -161,7 +175,6 @@ def add_patient():
         }
         patients_collection.insert_one(patients_data)
     return render_template('add_patient.html')
-
 
 @app.route('/add_doc', methods=['GET', 'POST'])
 def add_doc():
@@ -187,6 +200,7 @@ def add_doc():
     return render_template('add_doc.html')
 
 
+
 @app.route('/appointment', methods=['GET', 'POST'])
 def appointment():
     if request.method == 'POST':
@@ -208,22 +222,21 @@ def appointment():
             'doc_appoint':None
         }
         appointment_collection.insert_one(data)
+        
+        return redirect('/')
         print("Data inserted into MongoDB")
 
     return render_template('appointment.html')
 
-# @app.post("/approve")
-# def approve():
-#     name = request.form['docName']
-#     patEmail=request.form['patEmail']
-#     appointment = appointment_collection.find({'email':patEmail})
-#     if appointment:
-#         appointment_collection.update_one(  {'email': patEmail},
-#             {'$set': {'doc_appoint': name}})
-#         return redirect('/doctor')
-    
+@app.post("/approve")
+def approve():
+    name = request.form['docName']
+    patEmail=request.form['patEmail']
+    appointment = appointment_collection.find({'email':patEmail})
 
- 
-
+    if appointment:
+        appointment_collection.update_one(  {'email': patEmail},
+            {'$set': {'doc_appoint': name}})
+        return redirect('/doctor')
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
