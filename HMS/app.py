@@ -9,7 +9,7 @@ from jinja2 import Environment, FileSystemLoader
 
 Doctor_Logedin = None
 
-template_loader = FileSystemLoader(searchpath="D:/dev/HMS/templates")
+template_loader = FileSystemLoader(searchpath="HMS/templates")
 jinja_env = Environment(loader=template_loader)
 app = Flask(__name__)
 
