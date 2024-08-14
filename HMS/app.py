@@ -28,7 +28,7 @@ def home():
             'comment': comment
         }
         contact_collection.insert_one(contact_data)
-    return render_template('index.html')
+    return render_template('templates/index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
