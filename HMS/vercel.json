@@ -1,9 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "HMS/app.py", "use": "@vercel/python" }
+    { "src": "HMS/api/app.py", "use": "@vercel/python" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "HMS/app.py" }
+    { "src": "/(.*)", "dest": "HMS/api/app.py" }
   ]
 }
